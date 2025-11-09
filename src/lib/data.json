@@ -1,0 +1,52 @@
+{
+  "myTasks": [
+    {
+      "_id": "6720a4f1b5e5c0001a100001",
+      "title": "File GSTR-3B",
+      "description": "Client X monthly return filing also ive got do some stuff too also some other stuu monthly return filing also ive got do some stuff too also some other stuu",
+      "dueDate": "2025-10-25",
+      "status": "pending",
+      "userId": "671a9d1f7a4a5b001a2a1111"
+    },
+    {
+      "_id": "6720a4f1b5e5c0001a100002",
+      "title": "Prepare project presentation",
+      "description": "Slides for Monday’s demo",
+      "dueDate": "2025-10-20",
+      "status": "completed",
+      "userId": "671a9d1f7a4a5b001a2a1111"
+    },
+    {
+      "_id": "6720a4f1b5e5c0001a100003",
+      "title": "Update documentation",
+      "description": "Add new API endpoints in docs",
+      "dueDate": "2025-10-28",
+      "status": "pending",
+      "userId": "671a9d1f7a4a5b001a2a2222"
+    },
+    {
+      "_id": "6720a4f1b5e5c0001a100004",
+      "title": "Code review for teammate PR",
+      "description": "Review login flow refactor",
+      "dueDate": "2025-10-23",
+      "status": "completed",
+      "userId": "671a9d1f7a4a5b001a2a2222"
+    },
+    {
+      "_id": "6720a4f1b5e5c0001a100005",
+      "title": "Create marketing report",
+      "description": "Quarterly performance summary",
+      "dueDate": "2025-10-24",
+      "status": "pending",
+      "userId": "671a9d1f7a4a5b001a2a3333"
+    },
+    {
+      "_id": "6720a4f1b5e5c0001a100006",
+      "title": "Fix dashboard layout bugs",
+      "description": "Resolve sidebar overflow issues",
+      "dueDate": "2025-10-27",
+      "status": "pending",
+      "userId": "671a9d1f7a4a5b001a2a3333"
+    }
+  ]
+}
