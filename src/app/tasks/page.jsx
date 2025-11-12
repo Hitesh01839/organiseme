@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useActionState } from "react";
 import { gsap } from "gsap";
 
 import Input from "@/components/Input";
@@ -11,11 +11,23 @@ import { addTaskAction } from "@/actions/TasksAction";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
+import { fetchTasks } from "@/lib/utils";
+
 const page = () => {
   const tasksRef = useRef([]);
 
   const { data: session, status } = useSession();
   const router = useRouter();
+
+  const [state, formAction, pending] = useActionState(addTaskAction, {
+    success: false,
+    message: "",
+  });
+
+  // re-fetches the task once a new task is added
+  useEffect(() => {
+    fetchTasks();
+  }, [state, pending]);
 
   useEffect(() => {
     gsap.fromTo(
@@ -44,9 +56,8 @@ const page = () => {
         >
           Enter your task
         </h1>
-
         {/* onSubmit sends the formData to the addTasksAction  */}
-        <form action={addTaskAction} className="flex flex-col space-y-8">
+        <form action={formAction} className="flex flex-col space-y-8">
           <Input
             type={"text"}
             name={"title"}
@@ -61,6 +72,7 @@ const page = () => {
           />
           <Btn text="Add task" ref={(el) => (tasksRef.current[3] = el)} />
         </form>
+        {/* TODO: add a message to show the state of action submit */}
       </div>
       <div ref={(el) => (tasksRef.current[4] = el)} className="tasks">
         <TaskCard />

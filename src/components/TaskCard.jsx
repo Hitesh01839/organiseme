@@ -2,15 +2,20 @@ import {
   changeTaskStatusAction,
   deleteTaskAction,
 } from "@/actions/TasksAction";
+
 import { MdDelete, MdEdit } from "react-icons/md";
+
 import EditTaskModal from "./EditTaskModal";
-import { myTasks } from "@/lib/data.json";
-import { useEffect, useRef, useState } from "react";
+
+import { useEffect, useRef, useState, useActionState } from "react";
+
 import { gsap } from "gsap";
+import { fetchTasks } from "@/lib/utils";
 
 const TaskCard = () => {
   const [toggle, setToggle] = useState(false);
   const [_id, setId] = useState("");
+  const [tasks, setTasks] = useState([]);
 
   const modalRef = useRef(null);
 
@@ -44,6 +49,12 @@ const TaskCard = () => {
     }
   }, [toggle]);
 
+  useEffect(async () => {
+    const tasks = await fetchTasks();
+
+    setTasks(tasks);
+  }, []);
+
   return (
     <div className="relative z-10 flex flex-col justify-center align-middle items-center task-card mt-6 p-4">
       {toggle && (
@@ -55,8 +66,8 @@ const TaskCard = () => {
         </div>
       )}
       <h1 className="m-4 text-3xl max-md:text-xl">Your Tasks</h1>
-      <div className="task-cards space-y-4">
-        {myTasks.map((task) => (
+      <div className="task-cards w-5xl max-md:w-fit space-y-4">
+        {tasks.map((task) => (
           <div
             key={task._id}
             className="task flex justify-between items-center px-6 mx-5 space-y-2 rounded-2xl p-4 backdrop-blur-2xl border border-white/20 bg-white/10 space-x-4"

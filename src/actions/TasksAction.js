@@ -1,12 +1,31 @@
 "use server";
 
-// TODO: connect to api to store data to databse
+import { auth } from "@/app/api/auth/[...nextauth]/route";
+import { connectMongoose } from "@/lib/mongodb";
+import Task from "@/models/Task";
 
-export const addTaskAction = async (formData) => {
-  const title = formData.get("title");
-  const description = formData.get("description");
+export const addTaskAction = async (prevState, formData) => {
+  const title = formData.get("title").toString();
+  const description = formData.get("description").toString();
 
-  console.log({ title, description });
+  const session = await auth();
+
+  if (!session?.user) {
+    throw new Error("Not authorized");
+  }
+
+  await connectMongoose();
+
+  const task = await Task.create({
+    userId: session.user.id,
+    title,
+    description,
+  });
+
+  return {
+    success: true,
+    message: "Added successfully!",
+  };
 };
 
 export const editTaskAction = async (formData) => {

@@ -23,7 +23,9 @@ const DesktopNav = () => {
 
       {session?.user ? (
         <div className="flex items-center space-x-5">
-          <span className="text-xl">Hi, {session.user.email}</span>
+          <span className="text-xl max-xl:text-lg">
+            Hi, {session.user.email}
+          </span>
           <span>|</span>
           <button
             type="button"
