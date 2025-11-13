@@ -1,15 +1,10 @@
-Alright Hitesh — here’s a **clean, professional, job-ready README** for your project **OrganiseMe**.
-No fluff. No cringe. Clear, polished, and portfolio-worthy.
-
 ---
-
 # 🗂️ **OrganiseMe — A Personal Task Management App**
 
 OrganiseMe is a clean, fast, and responsive task manager built with **Next.js**, **MongoDB**, and **modern UI patterns**.
 It supports real-time-feeling CRUD updates, secure authentication, and a smooth UX with animations.
 
 This project demonstrates practical full-stack engineering skills — API design, authentication, form handling, state management, database modelling, and UI polish.
-
 ---
 
 ## 🚀 **Live Demo**
