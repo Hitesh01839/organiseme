@@ -1,36 +1,121 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Alright Hitesh — here’s a **clean, professional, job-ready README** for your project **OrganiseMe**.
+No fluff. No cringe. Clear, polished, and portfolio-worthy.
 
-## Getting Started
+---
 
-First, run the development server:
+# 🗂️ **OrganiseMe — A Personal Task Management App**
+
+OrganiseMe is a clean, fast, and responsive task manager built with **Next.js**, **MongoDB**, and **modern UI patterns**.
+It supports real-time-feeling CRUD updates, secure authentication, and a smooth UX with animations.
+
+This project demonstrates practical full-stack engineering skills — API design, authentication, form handling, state management, database modelling, and UI polish.
+
+---
+
+## 🚀 **Live Demo**
+
+🔗 **[https://organiseme.vercel.app](https://organiseme.vercel.app)**
+_(Replace this with your deployed link)_
+
+---
+
+## 📌 **Features**
+
+- ✔ **Create, Read, Update, Delete tasks**
+- ✔ **Real-time UI updates (optimistic update + refresh)**
+- ✔ **Secure login with Auth.js (Credentials Provider)**
+- ✔ **MongoDB Atlas database integration**
+- ✔ **Edit tasks via modal with smooth GSAP animation**
+- ✔ **Status toggle (Pending ✓ Completed)**
+- ✔ **Responsive, clean UI with blur + glass effect**
+- ✔ **Toast errors & client-side validation**
+- ✔ **API routes for consistent CRUD operations**
+- ✔ **Protected routes — only logged-in users can access tasks**
+
+---
+
+## 🛠️ **Tech Stack**
+
+### **Frontend**
+
+- Next.js (App Router)
+- React (Client + Server Components)
+- TailwindCSS
+- GSAP (modal animations)
+
+### **Backend**
+
+- Next.js API Routes
+- Auth.js (NextAuth v5)
+- MongoDB + Mongoose
+
+### **Other**
+
+- JWT-based sessions
+- Vercel Deployment
+- Optimistic UI updates
+- Modular component architecture
+
+---
+
+## 🔐 **Authentication**
+
+OrganiseMe uses **Auth.js Credentials Provider** with:
+
+- Email & password login
+- bcrypt password hashing
+- JWT session strategy
+- Custom session callbacks to include user ID
+
+---
+
+## ▶️ **Run locally**
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+App runs on:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🧪 **API Endpoints**
 
-To learn more about Next.js, take a look at the following resources:
+### Get Tasks
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+`GET /api/tasks`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## ✨ **What I Learned**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Structuring server actions vs client components
+- Fixing Auth.js session propagation
+- Avoiding “Form disconnected” errors in modals
+- Building real-time-feeling CRUD with optimistic updates
+- Secure API design for multi-user task management
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 📸 **Screenshots**
+
+_(Add screenshots here)_
+
+---
+
+## 📄 **License**
+
+MIT License.
+
+---
+
+## ⭐ **Support**
+
+If you like this project, please ⭐ the repo — it helps a lot!
+
+---
