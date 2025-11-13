@@ -1,13 +1,10 @@
-import {
-  changeTaskStatusAction,
-  deleteTaskAction,
-} from "@/actions/TasksAction";
+import { deleteTaskAction } from "@/actions/TasksAction";
 
 import { MdDelete, MdEdit } from "react-icons/md";
 
 import EditTaskModal from "./EditTaskModal";
 
-import { useEffect, useRef, useState, useActionState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { gsap } from "gsap";
 import { fetchTasks } from "@/lib/utils";
@@ -19,8 +16,8 @@ const TaskCard = () => {
 
   const modalRef = useRef(null);
 
-  const handleStatusChange = (_id, newStatus) => {
-    changeTaskStatusAction(_id, newStatus);
+  const handleTaskDelete = async (id) => {
+    await deleteTaskAction(id);
   };
 
   const toggleModal = async (id) => {
@@ -49,10 +46,12 @@ const TaskCard = () => {
     }
   }, [toggle]);
 
-  useEffect(async () => {
-    const tasks = await fetchTasks();
-
-    setTasks(tasks);
+  useEffect(() => {
+    const myTasks = async () => {
+      const res = await fetchTasks();
+      setTasks(res);
+    };
+    myTasks();
   }, []);
 
   return (
@@ -66,24 +65,13 @@ const TaskCard = () => {
         </div>
       )}
       <h1 className="m-4 text-3xl max-md:text-xl">Your Tasks</h1>
-      <div className="task-cards w-5xl max-md:w-fit space-y-4">
-        {tasks.map((task) => (
+      <div className="task-cards w-5xl max-lg:w-3xl max-md:w-fit space-y-4">
+        {tasks?.map((task) => (
           <div
             key={task._id}
             className="task flex justify-between items-center px-6 mx-5 space-y-2 rounded-2xl p-4 backdrop-blur-2xl border border-white/20 bg-white/10 space-x-4"
           >
             <div className="task-data flex space-x-4">
-              <input
-                className="accent-[#0a0a0a]"
-                type="checkbox"
-                checked={task.status === "completed"}
-                onChange={(e) =>
-                  handleStatusChange(
-                    task._id,
-                    e.target.checked ? "completed" : "pending"
-                  )
-                }
-              />
               <div className="space-y-2">
                 <h4 className="font-bold">{task.title}</h4>
                 <p className="pr-1">{task.description}</p>
@@ -93,7 +81,7 @@ const TaskCard = () => {
               <div className="flex px-2 space-x-4">
                 <button
                   className="cursor-pointer"
-                  onClick={() => deleteTaskAction(task._id)}
+                  onClick={() => handleTaskDelete(task._id)}
                 >
                   <MdDelete />
                 </button>

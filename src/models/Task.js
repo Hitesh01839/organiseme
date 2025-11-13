@@ -16,11 +16,6 @@ const taskSchema = new Schema(
       type: String,
       default: "",
     },
-    status: {
-      type: String,
-      enum: ["completed", "pending"],
-      default: "pending",
-    },
   },
   { timestamps: true }
 );

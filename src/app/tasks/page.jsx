@@ -24,7 +24,6 @@ const page = () => {
     message: "",
   });
 
-  // re-fetches the task once a new task is added
   useEffect(() => {
     fetchTasks();
   }, [state, pending]);
@@ -72,7 +71,7 @@ const page = () => {
           />
           <Btn text="Add task" ref={(el) => (tasksRef.current[3] = el)} />
         </form>
-        {/* TODO: add a message to show the state of action submit */}
+        <p className="text-green-400">{state.message}</p>
       </div>
       <div ref={(el) => (tasksRef.current[4] = el)} className="tasks">
         <TaskCard />

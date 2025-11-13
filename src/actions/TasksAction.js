@@ -31,14 +31,47 @@ export const addTaskAction = async (prevState, formData) => {
 export const editTaskAction = async (formData) => {
   const id = formData.get("id");
   const new_title = formData.get("title");
-  console.log(`this is edit and id is: ${id} and ${new_title}`);
-};
+  const new_description = formData.get("description");
 
-export const changeTaskStatusAction = async (_id, newStatus) => {
-  // TODO: set the status in database
-  console.log(_id, newStatus);
+  console.log(new_title);
+
+  const session = await auth();
+
+  if (!session?.user) {
+    throw new Error("Not authorized");
+  }
+
+  await connectMongoose();
+
+  const task = await Task.findByIdAndUpdate(
+    {
+      title: new_title,
+      description: new_description,
+    },
+    id
+  );
+
+  return {
+    success: true,
+    message: "Updated successfully!",
+  };
 };
 
 export const deleteTaskAction = async (id) => {
   console.log(`this is delete and id is: ${id}`);
+
+  const session = await auth();
+
+  if (!session?.user) {
+    throw new Error("Not Authorized!");
+  }
+
+  await connectMongoose();
+
+  const task = await Task.findByIdAndDelete(id);
+
+  return {
+    success: true,
+    message: "Deleted successfully!",
+  };
 };

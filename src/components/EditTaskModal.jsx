@@ -5,10 +5,10 @@ import Btn from "./Btn";
 
 const EditTaskModal = ({ id, toggle }) => {
   const [_toggle, setToggle] = useState(toggle);
+
   return (
     <>
       {_toggle && (
-        // onSubmit sends the formData to the editTaskAction
         <form
           className="flex flex-col bg-[#0a0a0a] backdrop-blur-xl align-middle items-center rounded-2xl p-10 m-4 space-y-6"
           action={editTaskAction}
@@ -26,12 +26,7 @@ const EditTaskModal = ({ id, toggle }) => {
           <input type="hidden" name="id" value={id} />
           <Input name="title" type="text" placeholder="New title" />
           <Input name="description" type="text" placeholder="New description" />
-          <Btn
-            onClick={(prevState) => setToggle(!prevState)}
-            value={_toggle}
-            type="submit"
-            text="Submit"
-          ></Btn>
+          <Btn text="Submit"></Btn>
         </form>
       )}
     </>
