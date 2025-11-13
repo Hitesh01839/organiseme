@@ -15,7 +15,6 @@ This project demonstrates practical full-stack engineering skills — API design
 ## 🚀 **Live Demo**
 
 🔗 **[https://organiseme.vercel.app](https://organiseme.vercel.app)**
-_(Replace this with your deployed link)_
 
 ---
 
