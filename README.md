@@ -98,8 +98,6 @@ http://localhost:3000
 
 ## 📸 **Screenshots**
 
-_(Add screenshots here)_
-
 ---
 
 ## 📄 **License**
