@@ -83,6 +83,7 @@ http://localhost:3000
 ### Get Tasks
 
 `GET /api/tasks`
+`PATCH /api/tasks`
 
 ---
 
@@ -97,6 +98,18 @@ http://localhost:3000
 ---
 
 ## 📸 **Screenshots**
+
+### Home Page
+
+![Home Page](public/screenshots/home.png)
+
+### Login Page
+
+![Login Page](public/screenshots/login.png)
+
+### Tasks Page
+
+![Tasks Page](public/screenshots/tasks.png)
 
 ---
 
