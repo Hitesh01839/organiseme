@@ -4,6 +4,7 @@ import { auth } from "@/app/api/auth/[...nextauth]/route";
 import { connectMongoose } from "@/lib/mongodb";
 import Task from "@/models/Task";
 
+// Server action to add a task
 export const addTaskAction = async (prevState, formData) => {
   const title = formData.get("title").toString();
   const description = formData.get("description").toString();
@@ -28,35 +29,7 @@ export const addTaskAction = async (prevState, formData) => {
   };
 };
 
-export const editTaskAction = async (formData) => {
-  const id = formData.get("id");
-  const new_title = formData.get("title");
-  const new_description = formData.get("description");
-
-  console.log(new_title);
-
-  const session = await auth();
-
-  if (!session?.user) {
-    throw new Error("Not authorized");
-  }
-
-  await connectMongoose();
-
-  const task = await Task.findByIdAndUpdate(
-    {
-      title: new_title,
-      description: new_description,
-    },
-    id
-  );
-
-  return {
-    success: true,
-    message: "Updated successfully!",
-  };
-};
-
+// Server action to delete a task
 export const deleteTaskAction = async (id) => {
   console.log(`this is delete and id is: ${id}`);
 

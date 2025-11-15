@@ -1,21 +1,48 @@
-import { editTaskAction } from "@/actions/TasksAction";
 import Input from "./Input";
-import { useState } from "react";
 import Btn from "./Btn";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const EditTaskModal = ({ id, toggle }) => {
   const [_toggle, setToggle] = useState(toggle);
+
+  const router = useRouter();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+    const title = formData.get("title");
+    const description = formData.get("description");
+
+    const res = await fetch("/api/tasks", {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id,
+        title,
+        description,
+      }),
+    });
+
+    const data = await res.json();
+    router.refresh();
+  };
 
   return (
     <>
       {_toggle && (
         <form
+          onSubmit={handleSubmit}
           className="flex flex-col bg-[#0a0a0a] backdrop-blur-xl align-middle items-center rounded-2xl p-10 m-4 space-y-6"
-          action={editTaskAction}
         >
           <div className="flex w-xl max-sm:w-xs justify-between">
             <h3 className="font-semibold">Edit Task</h3>
             <button
+              type="button"
               className="font-bold cursor-pointer"
               value={toggle}
               onClick={(prevState) => setToggle(!prevState)}
@@ -23,10 +50,9 @@ const EditTaskModal = ({ id, toggle }) => {
               x
             </button>
           </div>
-          <input type="hidden" name="id" value={id} />
           <Input name="title" type="text" placeholder="New title" />
           <Input name="description" type="text" placeholder="New description" />
-          <Btn text="Submit"></Btn>
+          <Btn type="submit" text="Submit"></Btn>
         </form>
       )}
     </>
